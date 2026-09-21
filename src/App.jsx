@@ -42,7 +42,7 @@ function App() {
       <div className='flex flex-wrap gap-6'>
         {filtrelenmisUrunler.map(
           (u) => (
-            <ProductCard key={u.id} id={u.id} isim={u.isim} fiyat={u.fiyat} link={u.gorsel} favEkle={favEkle} />
+            <ProductCard favoriMi={favori.includes(u.id)} key={u.id} id={u.id} isim={u.isim} fiyat={u.fiyat} link={u.gorsel} favEkle={favEkle} />
           )
         )}
       </div>
