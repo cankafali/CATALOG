@@ -1,4 +1,4 @@
-function ProductCard({ favoriMi, key, id, isim, fiyat, link, favEkle }) {
+function ProductCard({ favoriMi, id, isim, fiyat, link, favEkle, sepetEkle }) {
     return (
         <div className="w-72 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
             <div>
@@ -14,12 +14,12 @@ function ProductCard({ favoriMi, key, id, isim, fiyat, link, favEkle }) {
                     <p className="font-medium text-gray-700">{isim}</p>
                     <p className="text-lg font-bold text-gray-900">{fiyat}</p>
                 </div>
-                <button className="cursor-pointer transition active:scale-95 w-full rounded-lg bg-gray-900 py-2 text-white hover:bg-gray-700">
-                    Sepete at
+                <button onClick={() => sepetEkle(id)} className="cursor-pointer transition active:scale-95 w-full rounded-lg bg-gray-900 py-2 text-white hover:bg-gray-700">
+                    Sepete ekle
                 </button>
                 <button onClick={() => favEkle(id)} className={`w-full cursor-pointer rounded-lg border py-2 transition active:scale-95 ${favoriMi
-                        ? "border-red-300 bg-red-50 text-red-600"
-                        : "border-gray-300 text-gray-700 hover:bg-gray-50"
+                    ? "border-red-300 bg-red-50 text-red-600"
+                    : "border-gray-300 text-gray-700 hover:bg-gray-50"
                     }`} >
                     {favoriMi ? "♥ Favoride" : "♡ Favoriye ekle"}
                 </button>

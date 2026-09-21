@@ -4,6 +4,7 @@ import ProductCard from './components/ProductCard'
 function App() {
   const [arama, setArama] = useState("");
   const [favori, setFavori] = useState([]);
+  const [sepet, setSepet] = useState([]);
 
   const urunler = [
     { id: 1, isim: "kulaklık", fiyat: 1200, gorsel: "https://picsum.photos/id/10/300" },
@@ -18,6 +19,10 @@ function App() {
       setFavori([...favori, id])
     }
 
+  }
+
+  function sepetEkle(id) {
+    setSepet([...sepet, id])
   }
 
   const filtrelenmisUrunler = urunler.filter((u) => (
@@ -37,12 +42,13 @@ function App() {
         />
         <p>Favoriler: {favori.join(", ")}</p>
         <p>Aranan: {arama}</p>
+        <p>sepet: {sepet.length} ürün</p>
       </div>
       {filtrelenmisUrunler.length === 0 && <p>Ürün bulunamadı</p>}
       <div className='flex flex-wrap gap-6'>
         {filtrelenmisUrunler.map(
           (u) => (
-            <ProductCard favoriMi={favori.includes(u.id)} key={u.id} id={u.id} isim={u.isim} fiyat={u.fiyat} link={u.gorsel} favEkle={favEkle} />
+            <ProductCard favoriMi={favori.includes(u.id)} key={u.id} id={u.id} isim={u.isim} fiyat={u.fiyat} link={u.gorsel} sepetEkle={sepetEkle} favEkle={favEkle} />
           )
         )}
       </div>
