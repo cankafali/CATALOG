@@ -11,6 +11,10 @@ function App() {
     { id: 4, isim: "pc", fiyat: 2200, gorsel: "https://picsum.photos/id/40/300" }
   ]
 
+  const filtrelenmisUrunler = urunler.filter((u) => (
+    u.isim.toLocaleLowerCase('tr').includes(arama.toLocaleLowerCase('tr'))
+  ));
+
   return (
     <div className="min-h-screen bg-gray-100 p-8  space-y-6">
 
@@ -24,9 +28,9 @@ function App() {
         />
         <p>Aranan: {arama}</p>
       </div>
-
+      {filtrelenmisUrunler.length === 0 && <p>Ürün bulunamadı</p>}
       <div className='flex flex-wrap gap-6'>
-        {urunler.map(
+        {filtrelenmisUrunler.map(
           (u) => (
             <ProductCard key={u.id} isim={u.isim} fiyat={u.fiyat} link={u.gorsel} />
           )
