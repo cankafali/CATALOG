@@ -12,7 +12,12 @@ function App() {
     { id: 4, isim: "pc", fiyat: 2200, gorsel: "https://picsum.photos/id/40/300" }
   ]
   function favEkle(id) {
-    setFavori([...favori, id])
+    if (favori.includes(id)) {
+      setFavori(favori.filter((f) => f !== id))
+    } else {
+      setFavori([...favori, id])
+    }
+
   }
 
   const filtrelenmisUrunler = urunler.filter((u) => (
