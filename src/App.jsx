@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import ProductCard from './components/ProductCard'
 
 function App() {
+  const [arama, setArama] = useState("");
 
   const urunler = [
     { id: 1, isim: "kulaklık", fiyat: 1200, gorsel: "https://picsum.photos/id/10/300" },
@@ -10,13 +12,26 @@ function App() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8 flex gap-6">
+    <div className="min-h-screen bg-gray-100 p-8  space-y-6">
 
-      {urunler.map(
-        (u) => (
-          <ProductCard key={u.id} isim={u.isim} fiyat={u.fiyat} link={u.gorsel} />
-        )
-      )}
+      <div>
+        <input className="w-full max-w-sm rounded-lg border border-gray-300 bg-white px-3 py-2"
+          type='text'
+          value={arama}
+          onChange={(e) => {
+            setArama(e.target.value);
+          }}
+        />
+        <p>Aranan: {arama}</p>
+      </div>
+
+      <div className='flex flex-wrap gap-6'>
+        {urunler.map(
+          (u) => (
+            <ProductCard key={u.id} isim={u.isim} fiyat={u.fiyat} link={u.gorsel} />
+          )
+        )}
+      </div>
     </div>
   )
 }
