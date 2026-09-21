@@ -14,7 +14,7 @@ function ProductCard({ isim, fiyat, link }) {
                     <p className="text-lg font-bold text-gray-900">{fiyat}</p>
                 </div>
                 <button className="w-full rounded-lg bg-gray-900 py-2 text-white hover:bg-gray-700">
-                    Sepete Ekle
+                    Sepete at
                 </button>
             </div>
         </div>
